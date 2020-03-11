@@ -19,15 +19,33 @@ get "/" do
 end
 
 # ログイン画面
-get "/signin" do
-    @title = "Signin"
-    return erb :signin
+get "/login" do
+    @title = "Login"
+    return erb :login
 end
 
-post "/signin" do
+post "/login" do
     session[:user] = params[:name]
     redirect '/main'
 end
+
+#サインアップ
+get '/signup' do
+    erb :signup
+end
+
+post '/signup' do
+    #signup.erbのフォームのinputタグのnameと一致する値をそれぞれ取得する
+    name = params[:name]
+    email = params[:email]
+    password = params[:password]
+    #入力された値をデータベースに保存する。PostgreSQLではreturningを書くことで実行したSQLのデータを返してくれる
+    user = db.exec_params("insert into users(name, email, password) values($1, $2, $3) returning id",[name, email, password]).first
+    session[:id] = user['id'] #サインアップと同時にログイン処理を行う
+    session[:notice] = {class: "success", message: "登録が完了しました"} #登録完了時のフラッシュメッセージ
+    redirect '/main' #メインページにリダイレクトする
+end
+
 
 # メイン
 get "/main" do
@@ -44,7 +62,7 @@ end
 # マイページ・ログアウト用
 post "/mypage" do 
     session[:user] = nil
-    redirect '/signin'
+    redirect '/login'
 end
 
 #コレクション
