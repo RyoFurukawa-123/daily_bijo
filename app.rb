@@ -21,13 +21,34 @@ end
 # ログイン画面
 get "/login" do
     @title = "Login"
+    redirect '/main' if session[:id]
     return erb :login
 end
 
-post "/login" do
-    session[:user] = params[:name]
-    redirect '/main'
+    post '/login' do
+        session[:user] = params[:name]
+        #login.erbファイルのフォームのinputタグのnameと一致する値をそれぞれ取得する
+        email = params[:email]
+        password = params[:password]
+        #入力されたemailとpasswordがデータベースに登録されている情報と一致するか照合し、user変数へ代入する
+        user = db.exec_params("select * from users where email = $1 and password = $2",[email, password]).first
+        if user #もしユーザー情報が一致した場合
+            session[:id] = user['id'] #セッションにユーザーIDを代入する
+            session[:notice] = {class: "success", message: "ログインしました"} #ログイン成功時のフラッシュメッセージ
+            redirect '/posts' #投稿一覧ページにリダイレクトする
+        else #ユーザー情報が一致しなかった場合
+            session[:notice] = {class: "danger", message: "メールアドレスかパスワードが間違っています"} #ログイン失敗時のフラッシュメッセージ
+            redirect '/login' #ログインページへリダイレクトする
+        end
+    end
+
+# ログアウト処理
+get '/logout' do
+    session.clear #保持しているセッション情報を削除する
+    session[:notice] = {class: "danger", message: "ログアウトしました"} #ログアウト時のフラッシュメッセージ
+    redirect '/' #ルートパスへリダイレクトする
 end
+
 
 #サインアップ
 get '/signup' do
