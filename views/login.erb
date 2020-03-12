@@ -1,23 +1,20 @@
 <h1 class="login">ログインしましょう</h1>
 
-<form action="/login" method="post">
-    <div>
-        <ul style="list-style:none">
-            <li>
-                <label for="name">名前:</label>
-                <input type="text" name="name">
-            </li>
-            <li>
-                <label for="email">mail:</label>
-                <input type="text" name="email">
-            </li>
-            <li>
-                <label for="name">パスワード:</label>
-                <input type="password" name="password">
-            </li>
-        </ul>
+<div class="row">
+    <div class="col-sm-6 col-lg-6 offset-3 p-5">
+        <form action="/login" method="post">
+            <div class="form-group">
+                <label for="email">メールアドレス</label>
+                <input type="text" class="form-control" name="email" id="email">
+            </div>
+            <div class="form-group">
+                <label for="password">パスワード</label>
+                <input type="password" class="form-control" name="password" id="password">
+            </div>
+            <div class="d-flex justify-content-center mt-5">
+                <button type="submit" class="btn btn-success mr-3">ログイン</button>
+                <a href="/signup" class="btn btn-primary">新規登録</a>
+            </div>
+        </form>
     </div>
-
-    <input type="submit" value="ログイン" class="btn btn-danger">
-    <a href="/signup" class="btn btn-primary">新規登録</a>
-</form>
+</div>
