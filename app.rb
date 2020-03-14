@@ -1,17 +1,17 @@
 require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra/cookies'
+require 'pg'
 
 enable :sessions
 
-def db
-    PG::connect(
+client = PG::connect(
     host: 'localhost', #今回はローカル環境なのでlocalhost
     user: 'furukawaryou', #ターミナルでwhoamiを実行し表示されたユーザー名
     password: '', #接続時のパスワード今回は設定しないので、空白
-    dbname: 'bijoapp' #作成したデータベース名
+    dbname: "aabijo" #作成したデータベース名
     ) 
-end
+
 
 get "/" do
     @title = "DailyBijo"
@@ -56,6 +56,22 @@ get '/signup' do
 end
 
 post '/signup' do
+
+    name = params[:name]            #view側で送信されたnameを受け取る
+    email = params[:email]          #view側で送信されたemailを受け取る
+    password = params[:password]    #view側で送信されたpasswordを受け取る
+    confirmation = params[:confirmation]  #view側で送信されたconfirmationを受け取る
+
+    redirect '/signup' if password != confirmation #もしpasswordとconfirmationが違う時 /signupにリダイレクトされる。
+
+    client.exec_params('insert into users(name,email,password) values($1,$2,$3)',[name,email,password])# usersテーブルに上で定義した変数(name,email,pass)の中身を入れる。
+
+    redirect '/'   # '/' にリダイレクトされる
+
+end
+
+=begin
+post '/signup' do
     #signup.erbのフォームのinputタグのnameと一致する値をそれぞれ取得する
     name = params[:name]
     email = params[:email]
@@ -66,6 +82,7 @@ post '/signup' do
     session[:notice] = {class: "success", message: "登録が完了しました"} #登録完了時のフラッシュメッセージ
     redirect '/main' #メインページにリダイレクトする
 end
+=end
 
 
 # メイン
