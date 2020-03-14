@@ -25,6 +25,19 @@ get "/login" do
     return erb :login
 end
 
+post '/login' do
+    name = params[:name]
+    email = params[:email]
+    password = params[:password]
+
+    @res = client.exec_params('select * from users where name = $1 and email = $2 and password = $3', [name, email, password]).first # @resにparamsで受け取ったname、email、passを元にusersテーブルからとってきて代入する
+
+    redirect '/login' if @res.nil?  #@resがnilだと /loginにリダイレクト
+    session[:user_id] = @res['id'].to_i  #@res['id'].to_iは@res['id']と取得されるデータが文字列なので整数に変換してsession[:user_id]に代入している。これでsessionに現在ログインしているuseが保持される。
+
+    redirect '/main'
+end
+=begin
     post '/login' do
         session[:user] = params[:name]
         #login.erbファイルのフォームのinputタグのnameと一致する値をそれぞれ取得する
@@ -41,6 +54,7 @@ end
             redirect '/login' #ログインページへリダイレクトする
         end
     end
+=end
 
 # ログアウト処理
 get '/logout' do
