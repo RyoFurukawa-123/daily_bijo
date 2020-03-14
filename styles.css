@@ -1,0 +1,39 @@
+
+
+.container {
+    background-color: seashell;
+    text-align: center;
+    width: 100%;
+}
+
+h1 {
+    color: rgb(197, 71, 226);
+    font-size: 100px;
+    margin: 0;
+}
+
+p{
+    font-size: 30px;
+    margin: 0;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+ul {
+    list-style: none;
+}
+
+/* singin2 */
+
+.login {
+    font-size: 80px;
+}
+
+/* main */
+/* 今日の美女ボタン */
+.bijo-button {
+    background-color:#FF6AC6
+}
