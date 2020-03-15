@@ -106,9 +106,13 @@ get "/main" do
     return erb :main
 end
 
+post '/main' do 
+
+    redirect '/result'
+end
+
 #マイページ
 get "/mypage" do
-
     return erb :mypage
 end
 
@@ -121,4 +125,21 @@ end
 #コレクション
 get "/collection" do
     return erb :collection
+end
+
+############################### 結果 ################################ 
+get "/result" do
+
+    @images  = ["吉岡里帆.jpg", "波瑠.jpg"]
+    @random_no = rand(2)
+    @random_image = @images[@random_no]
+    
+    @kindtext = ["かっこいいね","いいね","よし","優しいね"]
+    @nice_text = rand(4)
+    @random_text = @kindtext[@nice_text]
+
+    return erb :result
+end
+
+post '/result' do
 end
