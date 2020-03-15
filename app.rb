@@ -34,6 +34,7 @@ post '/login' do
 
     redirect '/login' if @res.nil?  #@resがnilだと /loginにリダイレクト
     session[:user_id] = @res['id'].to_i  #@res['id'].to_iは@res['id']と取得されるデータが文字列なので整数に変換してsession[:user_id]に代入している。これでsessionに現在ログインしているuseが保持される。
+    session[:user] = params[:name]
 
     redirect '/main'
 end
