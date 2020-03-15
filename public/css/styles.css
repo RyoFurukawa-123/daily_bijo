@@ -31,3 +31,15 @@ ul {
 .login {
     font-size: 80px;
 }
+
+/* main */
+/* 今日の美女ボタン */
+#btn {
+    width: 100px;
+    height: 100px;
+    background-color: pink;
+    border-radius: 50%;
+    text-align: center;
+    line-height: 100px;
+    
+}
