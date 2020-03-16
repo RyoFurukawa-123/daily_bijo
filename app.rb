@@ -2,6 +2,7 @@ require 'sinatra'
 require 'sinatra/reloader' if development?
 require 'sinatra/cookies'
 require 'pg'
+require 'pry' #デバッグの際に使用するgem
 
 enable :sessions
 
@@ -82,7 +83,7 @@ post '/signup' do
 
     client.exec_params('insert into users(name,email,password) values($1,$2,$3)',[name,email,password])# usersテーブルに上で定義した変数(name,email,pass)の中身を入れる。
 
-    redirect '/'   # '/' にリダイレクトされる
+    redirect '/' 
 
 end
 
@@ -135,7 +136,8 @@ get "/result" do
     @title = "result"
 
     @images  = [
-        "吉岡里帆.jpg", "波瑠.jpg","えなこ.jpg","おのののか.jpg","こばしり.jpg","ツウィ.jpg","ナヨン.jpg","マーシュ彩.jpg",
+        "吉岡里帆.jpg", "波瑠.jpg","えなこ.jpg","おのののか.jpg",
+        "こばしり.jpg","ツウィ.jpg","ナヨン.jpg","マーシュ彩.jpg",
         "マーフィー波奈.jpg","ミナ.jpg","モモ.jpg","ロンモンロウ.jpg",
         "綾瀬はるか.jpg","井口綾子.jpg","宇垣美里.jpg","羽柴なつみ.jpg",
         "衛藤美彩.jpg","加藤玲奈.jpg","喜多乃愛.jpg","橋本環奈.jpg",
@@ -159,8 +161,8 @@ get "/result" do
     @random_no = rand(100)
     @random_image = @images[@random_no]
 
-    @kindtext = ["かっこいいね","いいね","よし","優しいね"]
-    @nice_text = rand(4)
+    @kindtext = ["かっこいいね","いいね","よし","優しいね","いつも頑張ってる姿見てるよ"]
+    @nice_text = rand(5)
     @random_text = @kindtext[@nice_text]
 
     return erb :result
