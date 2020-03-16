@@ -1,14 +1,21 @@
-<h1>結果です</h1>
+<h1 class="result-bijo pt-4 pb-4">今日の美女</h1>
 
 
 <%# 画像表示 %>
+<div class="photo-container">
 <img src="images/<%= @random_image%>">
+</div>
 
 <%# 美女の名前表示 %>
-<p><%= @random_image%></p>
+<p><%= @random_image_removejpg%></p>
 
 <%# 美女からのお言葉表示 %>
 <p><%= @random_text%></p>
+
+<a href="/result" class="btn btn-danger">泣きの一回</a>
+<a href="/logout" class="btn btn-primary">いってらっしゃい</a>
+<a href="/mybijo" class="btn btn-info">マイ美女に追加</a>
+
 
 
 <%# <img src ="images/mylogo1.jpg">
