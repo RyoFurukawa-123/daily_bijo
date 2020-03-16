@@ -159,7 +159,13 @@ get "/result" do
         "堀田茜.jpg","本田翼.jpg","有村架純.jpg","与田祐希.jpg","鈴木えみ.jpg","鈴木愛理.jpg",
         "齋藤飛鳥.jpg","筧美和子.jpg","齊藤京子.jpg"]
     @random_no = rand(100)
+    # @images.each do |image|
+    #     puts image.delete(".jpg")
+    # end
     @random_image = @images[@random_no]
+    @random_image_removejpg = @random_image.delete(".jpg")
+    
+
 
     @kindtext = ["かっこいいね","いいね","よし","優しいね","いつも頑張ってる姿見てるよ"]
     @nice_text = rand(5)
@@ -169,4 +175,10 @@ get "/result" do
 end
 
 post '/result' do
+end
+
+
+#-------------- マイ美女 -----------------
+get '/mybijo' do
+    return erb :mybijo
 end
