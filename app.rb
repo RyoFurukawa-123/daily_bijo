@@ -67,6 +67,7 @@ end
 
 #サインアップ
 get '/signup' do
+    @title = "signup"
     erb :signup
 end
 
@@ -102,6 +103,7 @@ end
 
 # メイン
 get "/main" do
+    @title = "今日の美女"
     @name = session[:user]
     return erb :main
 end
@@ -113,6 +115,7 @@ end
 
 #マイページ
 get "/mypage" do
+    @title = "マイページ"
     return erb :mypage
 end
 
@@ -129,11 +132,33 @@ end
 
 ############################### 結果 ################################ 
 get "/result" do
+    @title = "result"
 
-    @images  = ["吉岡里帆.jpg", "波瑠.jpg"]
-    @random_no = rand(2)
+    @images  = [
+        "吉岡里帆.jpg", "波瑠.jpg","えなこ.jpg","おのののか.jpg","こばしり.jpg","ツウィ.jpg","ナヨン.jpg","マーシュ彩.jpg",
+        "マーフィー波奈.jpg","ミナ.jpg","モモ.jpg","ロンモンロウ.jpg",
+        "綾瀬はるか.jpg","井口綾子.jpg","宇垣美里.jpg","羽柴なつみ.jpg",
+        "衛藤美彩.jpg","加藤玲奈.jpg","喜多乃愛.jpg","橋本環奈.jpg",
+        "橋本奈々未.jpg","原奈々美.jpg","戸田恵梨香.jpg","広瀬アリス.jpg",
+        "広瀬すず.jpg","弘中綾香.jpg","高田里穂.jpg","高畑充希.jpg",
+        "黒木ひかり.jpg","今田美桜.jpg","佐々木希.jpg","佐野ひなこ.jpg",
+        "菜々緒.jpg","桜井日奈子.jpg","三吉彩花.jpg","山本舞香.jpg","志田未来.jpg",
+        "十味.jpg","小坂菜緒.jpg","小室安未.jpg","小芝風花.jpg","小倉優香.jpg",
+        "小嶋陽菜.jpg","松岡茉優.jpg","松下玲緒菜.jpg","松田るか.jpg","松本愛.jpg",
+        "上野樹里.jpg","新垣結衣.jpg","新木優子.jpg","深川麻衣.jpg","深田恭子.jpg",
+        "水湊みお.jpg","清野菜名.jpg","生田絵梨花.jpg","西村歩乃果.jpg","西野七瀬.jpg",
+        "石原さとみ.jpg","石田ニコル.jpg","川口春奈.jpg","泉里香.jpg","多部未華子.jpg",
+        "大石絵理.jpg","大島優子.jpg","沢尻エリカ.jpg","谷川菜奈.jpg","丹羽仁希.jpg",
+        "池上紗理依.jpg","池田エライザ.jpg","中条あやみ.jpg","中村アン.jpg",
+        "朝比奈彩.jpg","長澤まさみ.jpg","長濱ねる.jpg","田中みな実.jpg","田中真琴.jpg",
+        "渡邉理佐.jpg","土屋太鳳.jpg","桃月なしこ.jpg","内田理央.jpg","二階堂ふみ.jpg",
+        "能年玲奈.jpg","馬場ふみか.jpg","白石聖.jpg","白石麻衣.jpg","飯豊まりえ.jpg",
+        "浜辺美波.jpg","武井咲.jpg","武田玲奈.jpg","芳根京子.jpg","北川景子.jpg","牧野真莉愛.jpg",
+        "堀田茜.jpg","本田翼.jpg","有村架純.jpg","与田祐希.jpg","鈴木えみ.jpg","鈴木愛理.jpg",
+        "齋藤飛鳥.jpg","筧美和子.jpg","齊藤京子.jpg"]
+    @random_no = rand(100)
     @random_image = @images[@random_no]
-    
+
     @kindtext = ["かっこいいね","いいね","よし","優しいね"]
     @nice_text = rand(4)
     @random_text = @kindtext[@nice_text]
