@@ -1,1 +1,10 @@
 <h1>マイ美女</h1>
+
+<form action="/mybijo" method="post" enctype="multipart/form-data">
+    <div>
+    <label for="img">画像: </label>
+    <input type="file" name="img">
+    <img src="images/<%= @img_name%>" alt="美女の画像">
+    </div>
+</form>
+<button class="back-btn btn-secondary" type="button" onclick="history.back('/main')">戻る</button>
