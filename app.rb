@@ -13,6 +13,10 @@ client = PG::connect(
     dbname: "aabijo" #作成したデータベース名
     ) 
 
+    def check_login
+        redirect '/login' unless session[:user_id]
+    end
+
 
 get "/" do
     @title = "DailyBijo"
@@ -62,8 +66,14 @@ end
 get '/logout' do
     session.clear #保持しているセッション情報を削除する
     session[:notice] = {class: "danger", message: "ログアウトしました"} #ログアウト時のフラッシュメッセージ
-    redirect '/' #ルートパスへリダイレクトする
+    redirect '/bye' #ルートパスへリダイレクトする
 end
+
+# いってらっしゃい
+get '/bye' do
+    return erb :bye
+end
+
 
 
 #サインアップ
@@ -104,6 +114,7 @@ end
 
 # メイン
 get "/main" do
+    check_login
     @title = "今日の美女"
     @name = session[:user]
     return erb :main
@@ -116,6 +127,7 @@ end
 
 #マイページ
 get "/mypage" do
+    check_login
     @title = "マイページ"
     return erb :mypage
 end
@@ -126,15 +138,12 @@ post "/mypage" do
     redirect '/login'
 end
 
-#コレクション
-get "/collection" do
-    return erb :collection
-end
-
 ############################### 結果 ################################ 
 get "/result" do
+    check_login
     @title = "result"
 
+    #---------------------------- ランダム画像表示 ----------------------------
     @images  = [
         "吉岡里帆.jpg", "波瑠.jpg","えなこ.jpg","おのののか.jpg",
         "こばしり.jpg","ツウィ.jpg","ナヨン.jpg","マーシュ彩.jpg",
@@ -159,13 +168,10 @@ get "/result" do
         "堀田茜.jpg","本田翼.jpg","有村架純.jpg","与田祐希.jpg","鈴木えみ.jpg","鈴木愛理.jpg",
         "齋藤飛鳥.jpg","筧美和子.jpg","齊藤京子.jpg"]
     @random_no = rand(100)
-    # @images.each do |image|
-    #     puts image.delete(".jpg")
-    # end
     @random_image = @images[@random_no]
     @random_image_removejpg = @random_image.delete(".jpg")
-    
 
+    #---------------------- ランダムテキスト表示----------------------------
 
     @kindtext = ["かっこいいね","いいね","よし","優しいね","いつも頑張ってる姿見てるよ"]
     @nice_text = rand(5)
@@ -174,11 +180,9 @@ get "/result" do
     return erb :result
 end
 
-post '/result' do
-end
-
 
 #-------------- マイ美女 -----------------
 get '/mybijo' do
+    check_login
     return erb :mybijo
 end
