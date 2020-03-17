@@ -3,6 +3,7 @@ require 'sinatra/reloader' if development?
 require 'sinatra/cookies'
 require 'pg'
 require 'pry' #デバッグの際に使用するgem
+require "fileutils" 
 
 enable :sessions
 
@@ -184,5 +185,19 @@ end
 #-------------- マイ美女 -----------------
 get '/mybijo' do
     check_login
+    return erb :mybijo
+end
+
+
+post "/mybijo" do
+    @value1 = params[:value1]
+    @value2 = params[:value2]
+    @value3 = params[:value3]
+    if !params[:img].nil? # データがあれば処理を続行する
+        tempfile = params[:img][:tempfile] # ファイルがアップロードされた場所
+        save_to = "./public/images/#{params[:img][:filename]}" # ファイルを保存したい場所
+        FileUtils.mv(tempfile, save_to)
+        @img_name = params[:img][:filename]
+    end
     return erb :mybijo
 end
