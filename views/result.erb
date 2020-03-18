@@ -12,9 +12,10 @@
 <%# 美女からのお言葉表示 %>
 <p><%= @random_text%></p>
 
-<a href="/result" class="btn btn-danger">泣きの一回</a>
-<a href="/logout" class="btn btn-primary">いってらっしゃい</a>
-<a href="/mybijo" class="btn btn-info">マイ美女に追加</a>
+<button class="onemore-btn mr-2 button" type="button" onclick="location.href='/result'">泣きの一回</button>
+<button class="go-btn mr-2 button" type="button" onclick="location.href='/bye'">いってらっしゃい</button>
+<button class="add-mybijo-btn btn-info button" type="button" onclick="location.href='/mybijo'">マイ美女に追加</button>
+
 
 
 

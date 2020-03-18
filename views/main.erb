@@ -1,11 +1,12 @@
-<h1>ようこそ <%= @name %> さん。</h1>
+<h1 class="welcome mb-5">ようこそ <%= @name %> さん</h1>
 <h2>今日は誰かな？？</h2>
 
 <div>
     <button class="bijo-btn" type="button" onclick="location.href='/result'">❤</button>
 </div>
 
-<button class="back-btn btn-secondary" type="button" onclick="history.back('/result')">戻る</button>
+    <p class="mb-5">言葉をもらう</p>
 
-    <p>言葉をもらう</p>
-    <a href="/logout" class="btn btn-danger">ログアウト</a>
+    <button class="back-btn button mr-2" type="button" onclick="history.back('/result')">戻る</button>
+
+    <button class="button logout" type="button" onclick="location.href='/logout'">ログアウト</button>
