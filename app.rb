@@ -94,7 +94,7 @@ post '/signup' do
 
     client.exec_params('insert into users(name,email,password) values($1,$2,$3)',[name,email,password])# usersテーブルに上で定義した変数(name,email,pass)の中身を入れる。
 
-    redirect '/' 
+    redirect '/login' 
 
 end
 
