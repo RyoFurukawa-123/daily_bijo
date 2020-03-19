@@ -21,7 +21,7 @@ h1 {
   color: black;
   font-size: 80px;
   font-weight: bold;
-  padding-top: 40px;
+  padding-top: 100px;
 }
 
 p {
@@ -40,6 +40,7 @@ ul {
 }
 .aabijo {
   color: #d519d5;
+  padding-top: 80px;
 }
 .start {
   font-family: "ヒラギノ角ゴ ProN";
