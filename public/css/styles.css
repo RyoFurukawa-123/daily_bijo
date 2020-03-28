@@ -40,7 +40,10 @@ ul {
 }
 .aabijo {
   color: #d519d5;
-  padding-top: 80px;
+  padding-top: 120px;
+}
+.intro {
+    padding-top: 50px;
 }
 .start {
   font-family: "ヒラギノ角ゴ ProN";
