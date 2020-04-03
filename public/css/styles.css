@@ -217,3 +217,16 @@ img {
 .bye-bijo {
     margin-bottom: 150px;
 }
+
+.share-btn {
+    color: white;
+    background-color: #1DA1F2;
+    padding: 5px 10px;
+    width: 150px;
+    height: 50px;
+  }
+  .share-btn:hover {
+    color:  #1DA1F2;
+    background-color: white;
+    text-decoration: none;
+  }
