@@ -169,6 +169,10 @@ ul {
 .result-bijo {
   color: black;
 }
+.random-text {
+    font-size: 40px;
+    font-weight: bold;
+}
 .onemore-btn {
   color: white;
   background-color: #e83450;
