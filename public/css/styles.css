@@ -234,3 +234,12 @@ img {
     background-color: white;
     text-decoration: none;
   }
+
+/*----------------- bye -----------------*/
+
+.bye { 
+    font-size: 40px;
+    margin-bottom: 100px;
+}
+.back-home {
+}
