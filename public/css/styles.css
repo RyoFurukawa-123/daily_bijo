@@ -78,6 +78,9 @@ ul {
   color: black;
   background-color: white;
 }
+.introduction {
+    font-size: 40px;
+}
 
 /*------------------ login ------------------*/
 
@@ -119,6 +122,7 @@ ul {
   height: 250px;
   font-size: 50px;
   color: white;
+
   background-color: #ff6ac6;
   border: none;
   border-radius: 50%;
