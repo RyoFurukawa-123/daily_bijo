@@ -141,6 +141,19 @@ ul {
   box-shadow: 15px 15px 30px -5px rgba(0, 0, 0, 0.15),
     6px 6px 10px -2px rgba(0, 0, 0, 0.1);
 }
+/*------------------ 出現美女ボタン ------------------*/
+.list-btn {
+    color: white;
+    background-color: #ff6ac6;
+    padding: 5px 10px;
+    width: 150px;
+    height: 50px;
+}
+.list-btn:hover {
+    color: #ff6ac6;
+    background-color: white;
+}
+/*------------------ 戻るボタン ------------------*/
 .back-btn {
   color: white;
   background-color: black;
@@ -152,6 +165,7 @@ ul {
   color: black;
   background-color: white;
 }
+/*------------------ ログアウト ------------------*/
 .logout {
   color: white;
   background-color: #e83450;
