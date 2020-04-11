@@ -261,3 +261,11 @@ img {
 }
 .back-home {
 }
+
+/*----------------- list.erb -----------------*/
+.pics-list {
+    display: flex;
+}
+.pics {
+    
+}
