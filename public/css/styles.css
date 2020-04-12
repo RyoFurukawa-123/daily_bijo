@@ -265,7 +265,6 @@ img {
 /*----------------- list.erb -----------------*/
 .pics-list {
     display: flex;
-}
-.pics {
-    
+    flex-wrap: wrap;
+    width: 30%;
 }
