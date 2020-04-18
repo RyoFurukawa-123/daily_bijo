@@ -5,7 +5,7 @@ require 'pg'
 require 'pry' #デバッグの際に使用するgem
 require "fileutils" 
 
-#   
+# http://localhost:4567/
 
 enable :sessions
 
